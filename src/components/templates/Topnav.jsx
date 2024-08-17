@@ -1,15 +1,28 @@
-import React, { useState } from "react";
+import axios from "../../utils/axios";
+import React, { useEffect, useState } from "react";
 import { IoSearch } from "react-icons/io5";
 import { RxCross2 } from "react-icons/rx";
 import { Link } from "react-router-dom";
+import comingsoon from "/comingsoon.jpg";
 const Topnav = () => {
   const [searchText, setSearchText] = useState("");
-  console.log(searchText);
-
+  const [apiData, setApiData] = useState([]);
+  const tmdbApiCall = async () => {
+    try {
+      const apiResponse = await axios.get(`/search/multi?query=${searchText}`);
+      setApiData(apiResponse.data.results);
+      console.log(apiResponse.data.results);
+    } catch (error) {
+      console.log("Error:", error);
+    }
+  };
+  useEffect(() => {
+    tmdbApiCall();
+  }, [searchText]);
   return (
-    <div className="max-w-screen-sm mx-auto my-2 overflow-hidden gap-1 flex flex-col relative">
+    <div className="max-w-screen-sm mx-auto my-2 px-2 md:px-0 overflow-hidden gap-1 flex flex-col relative">
       <div className=" flex items-center justify-start  bg-zinc-500 w-full h-12 rounded-md ">
-        <IoSearch className="text-2xl ml-5 text-red-600 cursor-pointer"/>
+        <IoSearch className="text-2xl ml-5 text-red-600 cursor-pointer" />
         <input
           onChange={(e) => setSearchText(e.target.value)}
           type="text"
@@ -25,20 +38,29 @@ const Topnav = () => {
         )}
       </div>
       <div className="max-h-80 w-full rounded-md overflow-auto bg-zinc-500 flex flex-col">
-        <Link className="flex gap-3 duration-200  items-center justify-start p-5 hover:bg-red-600 w-full">
-          <img src="#" alt="" />
-          <span className="text-sm tracking-wide font-medium">hello</span>
-        </Link>
-
-        <Link className="flex gap-3 duration-200  items-center justify-start p-5 hover:bg-red-600 w-full">
-          <img src="#" alt="" />
-          <span className="text-sm tracking-wide font-medium">hello</span>
-        </Link>
-
-        <Link className="flex gap-3 duration-200  items-center justify-start p-5 hover:bg-red-600 w-full">
-          <img src="#" alt="" />
-          <span className="text-sm tracking-wide font-medium">hello</span>
-        </Link>
+        {apiData.map((data, dataIndex) => (
+          <Link
+            key={dataIndex}
+            className="flex gap-3 duration-200  items-center justify-start px-5 py-2 hover:rounded hover:bg-red-600 w-full"
+          >
+            <img
+              className="w-28 h-16 object-fit rounded-sm shadow-sm shadow-black"
+              src={
+                data.backdrop_path || data.profile_path
+                  ? `https://image.tmdb.org/t/p/original/${
+                      data.backdrop_path || data.profile_path
+                    } `
+                  : comingsoon
+              }
+            />
+            <span className="text-sm tracking-wide font-medium">
+              {data.title ||
+                data.name ||
+                data.original_title ||
+                data.original_name}
+            </span>
+          </Link>
+        ))}
       </div>
     </div>
   );
