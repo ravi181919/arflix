@@ -20,47 +20,49 @@ const Topnav = () => {
     tmdbApiCall();
   }, [searchText]);
   return (
-    <div className="max-w-screen-sm mx-auto my-2 px-2 md:px-0 overflow-hidden gap-1 flex flex-col relative">
-      <div className=" flex items-center justify-start  bg-zinc-500 w-full h-12 rounded-md ">
-        <IoSearch className="text-2xl ml-5 text-red-600 cursor-pointer" />
-        <input
-          onChange={(e) => setSearchText(e.target.value)}
-          type="text"
-          value={searchText}
-          placeholder="Search..."
-          className="bg-transparent outline-none  border-none px-5 w-full h-full mx-6"
-        />
-        {searchText.length > 0 && (
-          <RxCross2
-            onClick={() => setSearchText("")}
-            className=" text-[2vw] mr-5 text-red-600 cursor-pointer"
+     <div className="absolute top-0 left-[0] w-full z-10">
+      <div className=" max-w-screen-sm mx-auto my-1 px-2 md:px-0 overflow-hidden gap-1 flex flex-col ">
+        <div className=" flex items-center justify-start  bg-zinc-500  w-full h-12 rounded-md ">
+          <IoSearch className="text-2xl ml-5 text-red-600 cursor-pointer" />
+          <input
+            onChange={(e) => setSearchText(e.target.value)}
+            type="text"
+            value={searchText}
+            placeholder="Search..."
+            className="bg-transparent outline-none  border-none px-5 w-full h-full mx-6"
           />
-        )}
-      </div>
-      <div className="max-h-80 w-full rounded-md overflow-auto bg-zinc-500 flex flex-col">
-        {apiData.map((data, dataIndex) => (
-          <Link
-            key={dataIndex}
-            className="flex gap-3 duration-200  items-center justify-start px-5 py-2 hover:rounded hover:bg-red-600 w-full"
-          >
-            <img
-              className="w-28 h-16 object-fit rounded-sm shadow-sm shadow-black"
-              src={
-                data.backdrop_path || data.profile_path
-                  ? `https://image.tmdb.org/t/p/original/${
-                      data.backdrop_path || data.profile_path
-                    } `
-                  : comingsoon
-              }
+          {searchText.length > 0 && (
+            <RxCross2
+              onClick={() => setSearchText("")}
+              className=" mr-5 bg-red-600 rounded-full w-[2.3vw] h-[2vw] p-1 cursor-pointer"
             />
-            <span className="text-sm tracking-wide font-medium">
-              {data.title ||
-                data.name ||
-                data.original_title ||
-                data.original_name}
-            </span>
-          </Link>
-        ))}
+          )}
+        </div>
+        <div className=" max-h-80 w-full rounded-md overflow-auto bg-zinc-500 flex flex-col">
+          {apiData.map((data, dataIndex) => (
+            <Link
+              key={dataIndex}
+              className="flex gap-3 duration-200  items-center justify-start px-5 py-2 hover:rounded hover:bg-red-600 w-full"
+            >
+              <img
+                className="w-28 h-16 object-fit rounded-sm shadow-sm shadow-black"
+                src={
+                  data.backdrop_path || data.profile_path
+                    ? `https://image.tmdb.org/t/p/original/${
+                        data.backdrop_path || data.profile_path
+                      } `
+                    : comingsoon
+                }
+              />
+              <span className="text-sm tracking-wide font-medium">
+                {data.title ||
+                  data.name ||
+                  data.original_title ||
+                  data.original_name}
+              </span>
+            </Link>
+          ))}
+        </div>
       </div>
     </div>
   );
