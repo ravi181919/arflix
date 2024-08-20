@@ -8,7 +8,9 @@ import Dropdown from "./templates/Dropdown";
 
 const Home = () => {
   const [banner, setBanner] = useState(null);
+  const [allTrending, setAllTrending] = useState(null);
   const [trendingOption, setTrendingOption] = useState("all");
+
   const bannerData = async () => {
     try {
       const { data } = await axios.get(`/trending/all/day`);
@@ -23,7 +25,7 @@ const Home = () => {
   const trending = async () => {
     try {
       const { data } = await axios.get(`/trending/${trendingOption}/day`);
-      console.log(data.results);
+      setAllTrending(data.results);
     } catch (error) {
       console.log("Error:", error);
     }
@@ -55,7 +57,9 @@ const Home = () => {
               trendingFunc={(e) => setTrendingOption(e.target.value)}
             />
           </div>
-          <Trending />
+          <div className="w-full h-64 flex  gap-4  overflow-x-scroll py-4 mb-5 px-5 ">
+            {allTrending.map((trending, indexTrending) => <Trending key={indexTrending} trend={trending} /> )}
+          </div>
         </div>
       </div>
     </div>

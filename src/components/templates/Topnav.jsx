@@ -11,7 +11,6 @@ const Topnav = () => {
     try {
       const apiResponse = await axios.get(`/search/multi?query=${searchText}`);
       setApiData(apiResponse.data.results);
-      console.log(apiResponse.data.results);
     } catch (error) {
       console.log("Error:", error);
     }
