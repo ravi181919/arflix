@@ -4,12 +4,14 @@ import Topnav from "./templates/Topnav";
 import Header from "./templates/Header";
 import axios from "../utils/axios";
 import Trending from "./templates/Trending";
+import Dropdown from "./templates/Dropdown";
 
 const Home = () => {
   const [banner, setBanner] = useState(null);
+  const [trendingOption, setTrendingOption] = useState("all");
   const bannerData = async () => {
     try {
-      const { data } = await axios.get("/trending/all/day");
+      const { data } = await axios.get(`/trending/all/day`);
       let randomBannerData =
         data.results[Math.floor(Math.random() * data.results.length)];
       setBanner(randomBannerData);
@@ -17,15 +19,25 @@ const Home = () => {
       console.log("Error:", error);
     }
   };
+
+  const trending = async () => {
+    try {
+      const { data } = await axios.get(`/trending/${trendingOption}/day`);
+      console.log(data.results);
+    } catch (error) {
+      console.log("Error:", error);
+    }
+  };
+
   useEffect(() => {
+    trending();
     !banner && bannerData();
-  }, []);
+  }, [trendingOption]);
 
   return banner ? (
     <div className="w-full h-full flex ">
       <div className="lg:w-[20%] md:w-[30%]  md:block hidden h-full">
-
-      <Sidebar />
+        <Sidebar />
       </div>
       <div className="lg:w-[80%] overflow-scroll overflow-x-hidden  md:w-[70%] flex flex-col border-l-[1px] border-zinc-500">
         <div className="relative">
@@ -35,6 +47,14 @@ const Home = () => {
           <Header banner={banner} />
         </div>
         <div className="relative">
+          <div className="w-full mt-5 px-10 overflow-scroll overflow-x-hidden flex justify-between">
+            <h1 className="text-2xl font-medium text-red-500">Trending</h1>
+            <Dropdown
+              title="Filter"
+              option={["tv", "movie", "all"]}
+              trendingFunc={(e) => setTrendingOption(e.target.value)}
+            />
+          </div>
           <Trending />
         </div>
       </div>
