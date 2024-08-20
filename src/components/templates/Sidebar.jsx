@@ -9,7 +9,7 @@ import { HiPhone } from "react-icons/hi2";
 import { Link } from "react-router-dom";
 const Sidebar = () => {
   return (
-    <div className="lg:w-[20%] md:w-[30%]  md:block hidden h-full border-r-[1px] border-zinc-500">
+    <div className="w-full h-full ">
       <div className="p-8 h-full w-full">
         <h1 className="flex text-lg font-bold items-center gap-2">
           <BiSolidTv className="text-red-600" />

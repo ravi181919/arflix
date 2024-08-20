@@ -12,14 +12,14 @@ const Header = ({ banner }) => {
   const movieLanguage = getLanguageName(banner.original_language);
 
   return (
-     <div className="absolute top-0 left-0 w-full">
+     <div className=" w-full">
     <div
       style={{
         background: `linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.5), rgba(0,0,0,.7)), url(${`https://image.tmdb.org/t/p/original/${banner.backdrop_path} `})`,
         backgroundPosition: "50% 10%",
         backgroundSize: "cover",
       }}
-      className="h-[70vh] max-w-screen-lg rounded-sm mx-auto "
+      className="h-[60vh] max-w-screen-lg rounded-sm mx-auto "
     >
       <div className="h-full w-[60%] text-zinc-200 p-10  flex items-start justify-end flex-col">
         <div className="flex gap-1">
