@@ -57,8 +57,10 @@ const Home = () => {
               trendingFunc={(e) => setTrendingOption(e.target.value)}
             />
           </div>
-          <div className="w-full h-64 flex  gap-4  overflow-x-scroll py-4 mb-5 px-5 ">
-            {allTrending.map((trending, indexTrending) => <Trending key={indexTrending} trend={trending} /> )}
+          <div className="w-full  flex  gap-4  overflow-x-scroll py-4 mb-5 px-5 ">
+            {allTrending.map((trending, indexTrending) => (
+              <Trending key={indexTrending} trend={trending} />
+            ))}
           </div>
         </div>
       </div>
