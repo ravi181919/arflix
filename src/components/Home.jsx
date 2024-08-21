@@ -36,15 +36,13 @@ const Home = () => {
     !banner && bannerData();
   }, [trendingOption]);
 
-  return banner ? (
+  return banner && allTrending ? (
     <div className="w-full h-full flex ">
       <div className="lg:w-[20%] md:w-[30%]  md:block hidden h-full">
         <Sidebar />
       </div>
       <div className="lg:w-[80%] overflow-scroll overflow-x-hidden  md:w-[70%] flex flex-col border-l-[1px] border-zinc-500">
-        <div className="relative">
-          <Topnav />
-        </div>
+        <Topnav />
         <div className="relative">
           <Header banner={banner} />
         </div>

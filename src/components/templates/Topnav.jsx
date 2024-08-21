@@ -19,9 +19,9 @@ const Topnav = () => {
     tmdbApiCall();
   }, [searchText]);
   return (
-     <div className="w-full z-10 absolute">
-      <div className=" max-w-screen-sm mx-auto my-1 px-2 md:px-0 overflow-hidden gap-1 flex flex-col ">
-        <div className=" flex items-center justify-start  bg-zinc-500  w-full h-12 rounded-md ">
+     <div className="w-full relative ">
+      <div className=" max-w-screen-sm mx-auto my-1 px-2 md:px-0 overflow-hidden gap-2 flex flex-col items-center">
+        <div className=" flex items-center justify-start   w-full h-12 rounded-md ">
           <IoSearch className="text-2xl ml-5 text-red-600 cursor-pointer" />
           <input
             onChange={(e) => setSearchText(e.target.value)}
@@ -37,7 +37,7 @@ const Topnav = () => {
             />
           )}
         </div>
-        <div className=" max-h-80 w-full rounded-md overflow-auto bg-zinc-500 flex flex-col">
+        <div className=" max-h-80 min-w-[45vw] rounded-sm overflow-auto absolute z-[1] top-full mt-1  bg-zinc-500 flex flex-col">
           {apiData.map((data, dataIndex) => (
             <Link
               key={dataIndex}

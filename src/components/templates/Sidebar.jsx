@@ -19,7 +19,7 @@ const Sidebar = () => {
         <hr className="border-none h-[1px] bg-red-600 w-full " />
 
         <nav className="flex flex-col gap-3 mt-6 ">
-          <Link className="flex items-center gap-2 duration-300 text-sm leading-none  font-medium hover:bg-red-600 hover:text-white text-zinc-400 p-4 rounded-md">
+          <Link to={'/trending'} className="flex items-center gap-2 duration-300 text-sm leading-none  font-medium hover:bg-red-600 hover:text-white text-zinc-400 p-4 rounded-md">
            <FaFire /> Trending
           </Link>
           <Link className="flex items-center gap-2 duration-300 text-sm leading-none  font-medium hover:bg-red-600 hover:text-white text-zinc-400 p-4 rounded-md">
