@@ -32,7 +32,9 @@ const Sidebar = () => {
            className="flex items-center gap-2 duration-300 text-sm leading-none  font-medium hover:bg-red-600 hover:text-white text-zinc-400 p-4 rounded-md">
            <BiSolidCameraMovie /> Movies
           </Link>
-          <Link className="flex items-center gap-2 duration-300 text-sm leading-none  font-medium hover:bg-red-600 hover:text-white text-zinc-400 p-4 rounded-md">
+          <Link 
+          to={'./tvshow'}
+          className="flex items-center gap-2 duration-300 text-sm leading-none  font-medium hover:bg-red-600 hover:text-white text-zinc-400 p-4 rounded-md">
            <FiTv /> Tv Show
           </Link>
           <Link className="flex items-center gap-2 duration-300 text-sm leading-none  font-medium hover:bg-red-600 hover:text-white text-zinc-400 p-4 rounded-md">
