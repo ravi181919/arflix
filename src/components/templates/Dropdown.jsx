@@ -13,7 +13,7 @@ const Dropdown = ({title, option, trendingFunc}) => {
         <option value="0" className="text-xs file:" disabled>
           {title}
         </option>
-        {option.map((option, optionIndex) => <option value={option} className="text-xs text-red-500" key={optionIndex}  >
+        {option.map((option, optionIndex) => <option value={option} className="text-xs font-medium text-red-500" key={optionIndex}  >
           {option.toUpperCase()}
         </option> )}
       </select>
