@@ -2,13 +2,14 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 const Cards = ({trending}) => {
+  
   return (
-    <div className='w-full overflow-hidden overflow-y-auto flex flex-wrap gap-4 items-center justify-center'>
+    <div className='w-full  flex flex-wrap gap-4 items-center justify-center bg-zinc-800'>
       {trending.map((items, index) => <Link key={index} className='flex flex-wrap w-52 h-60 overflow-hidden' >
-      <div className="w-full h-[70%] rounded overflow-hidden">
+      <div className="w-full h-[70%] rounded-sm overflow-hidden">
         <img
           className="w-full h-full object-cover"
-          src={`https://image.tmdb.org/t/p/original/${items.backdrop_path} `}
+          src={`https://image.tmdb.org/t/p/original/${items.poster_path || items.backdrop_path} `}
           alt=""
         />
       </div>
@@ -21,7 +22,7 @@ const Cards = ({trending}) => {
               items.original_name}
           </h1>
           <h1 className="text-sm ml-[2px] font-medium mt-[5px] leading-none text-zinc-400">
-            {items.adult === false ? `13+` : `18+`}
+            {items.adult ? `13+` : `18+`}
           </h1>
         
         </div>

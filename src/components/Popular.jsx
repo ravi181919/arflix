@@ -7,23 +7,24 @@ import axios from "../utils/axios";
 import Cards from "./templates/Cards";
 import InfiniteScroll from "react-infinite-scroll-component";
 
-const Trendingnow = () => {
-  
-  const navigate = useNavigate();
-  const [category, setCategory] = useState("all");
-  const [duration, setDuration] = useState("day");
-  const [trending, setTrending] = useState([]);
-  const [pageCount, setPageCount] = useState(1);
-  const [hasMore, setHasMore] = useState(true);
-  
+const Popular = () => {
+
+    const navigate = useNavigate();
+    const [category, setCategory] = useState("tv");
+    const [popular, setPopular] = useState([]);
+    const [pageCount, setPageCount] = useState(1);
+    const [hasMore, setHasMore] = useState(true);
+
   document.title = `| ARFLIX | Trending  |  ${category} |`.toLocaleUpperCase();
-  const getTrending = async () => {
+
+
+  const getPopular = async () => {
     try {
       const { data } = await axios.get(
-        `/trending/${category}/${duration}?page=${pageCount}`
+        `/${category}/popular?page=${pageCount}`
       );
       if (data.results.length > 0) {
-        setTrending((prevState) => [...prevState, ...data.results]);
+        setPopular((prevState) => [...prevState, ...data.results]);
         setPageCount(pageCount + 1);
       } else {
         setHasMore(false);
@@ -33,18 +34,19 @@ const Trendingnow = () => {
     }
   };
   const refreshHandler = () => {
-    if (trending.length === 0) {
-      getTrending();
+    if (popular.length === 0) {
+      getPopular();
     } else {
       setPageCount(1);
-      setTrending([]);
-      getTrending();
+      setPopular([]);
+      getPopular();
     }
   };
   useEffect(() => {
     refreshHandler();
-  }, [category, duration]);
-  return trending.length > 0 ? (
+  }, [category]);
+
+  return popular.length > 0 ? (
     <div className="flex flex-col gap-4  h-screen pb-5">
       <div className="flex w-full items-center px-5 justify-between ">
         <div className="flex items-center justify-center gap-2">
@@ -54,7 +56,7 @@ const Trendingnow = () => {
           >
             <CgArrowLongLeftC />
           </span>
-          <h1 className="text-lg font-medium text-zinc-400 ">Trending</h1>
+          <h1 className="text-lg font-medium text-zinc-400 ">popular</h1>
         </div>
 
         <Topnav />
@@ -66,24 +68,19 @@ const Trendingnow = () => {
         <div className="flex items-center gap-2">
           <Dropdown
             title="Category"
-            option={["movie", "tv", "all"]}
+            option={["movie", "tv"]}
             trendingFunc={(e) => setCategory(e.target.value)}
-          />
-          <Dropdown
-            title="Duration"
-            option={["day", "week"]}
-            trendingFunc={(e) => setDuration(e.target.value)}
           />
         </div>
       </div>
 
       <InfiniteScroll
-        dataLength={trending.length}
+        dataLength={popular.length}
         loader={<h1>Loading....</h1>}
-        next={getTrending}
+        next={getPopular}
         hasMore={hasMore}
       >
-        <Cards trending={trending} />
+        <Cards trending={popular} />
       </InfiniteScroll>
     </div>
   ) : (
@@ -91,4 +88,4 @@ const Trendingnow = () => {
   );
 };
 
-export default Trendingnow;
+export default Popular;

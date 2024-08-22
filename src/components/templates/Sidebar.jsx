@@ -22,7 +22,9 @@ const Sidebar = () => {
           <Link to={'/trending'} className="flex items-center gap-2 duration-300 text-sm leading-none  font-medium hover:bg-red-600 hover:text-white text-zinc-400 p-4 rounded-md">
            <FaFire /> Trending
           </Link>
-          <Link className="flex items-center gap-2 duration-300 text-sm leading-none  font-medium hover:bg-red-600 hover:text-white text-zinc-400 p-4 rounded-md">
+          <Link
+          to={'/popular'}
+           className="flex items-center gap-2 duration-300 text-sm leading-none  font-medium hover:bg-red-600 hover:text-white text-zinc-400 p-4 rounded-md">
            <PiShootingStarFill /> Popular
           </Link>
           <Link className="flex items-center gap-2 duration-300 text-sm leading-none  font-medium hover:bg-red-600 hover:text-white text-zinc-400 p-4 rounded-md">
