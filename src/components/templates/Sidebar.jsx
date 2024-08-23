@@ -37,8 +37,8 @@ const Sidebar = () => {
           className="flex items-center gap-2 duration-300 text-sm leading-none  font-medium hover:bg-red-600 hover:text-white text-zinc-400 p-4 rounded-md">
            <FiTv /> Tv Show
           </Link>
-          <Link className="flex items-center gap-2 duration-300 text-sm leading-none  font-medium hover:bg-red-600 hover:text-white text-zinc-400 p-4 rounded-md">
-           <RiTeamFill /> Team
+          <Link to={'./person'} className="flex items-center gap-2 duration-300 text-sm leading-none  font-medium hover:bg-red-600 hover:text-white text-zinc-400 p-4 rounded-md">
+           <RiTeamFill /> Stars
           </Link>
         </nav>
 
