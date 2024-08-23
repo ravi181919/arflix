@@ -1,7 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-const Cards = ({trending}) => {
+const Cards = ({trending, title}) => {
+  console.log(title);
   
   return (
     <div className='w-full  flex flex-wrap gap-4 items-center justify-center bg-zinc-800'>

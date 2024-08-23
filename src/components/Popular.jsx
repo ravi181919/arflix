@@ -15,7 +15,7 @@ const Popular = () => {
     const [pageCount, setPageCount] = useState(1);
     const [hasMore, setHasMore] = useState(true);
 
-  document.title = `| ARFLIX | Trending  |  ${category} |`.toLocaleUpperCase();
+  document.title = `| ARFLIX | Popular  |  ${category} |`.toLocaleUpperCase();
 
 
   const getPopular = async () => {
@@ -80,7 +80,7 @@ const Popular = () => {
         next={getPopular}
         hasMore={hasMore}
       >
-        <Cards trending={popular} />
+        <Cards trending={popular} title={category} />
       </InfiniteScroll>
     </div>
   ) : (

@@ -83,7 +83,7 @@ const Trendingnow = () => {
         next={getTrending}
         hasMore={hasMore}
       >
-        <Cards trending={trending} />
+        <Cards trending={trending} title={category} />
       </InfiniteScroll>
     </div>
   ) : (
