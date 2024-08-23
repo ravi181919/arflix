@@ -44,7 +44,7 @@ const Home = () => {
       </div>
       <div className="lg:w-[80%] overflow-scroll overflow-x-hidden  md:w-[70%] flex flex-col border-l-[1px] border-zinc-500">
         <Topnav />
-        <div className="relative">
+        <div className="relative ">
           <Header banner={banner} />
         </div>
         <div className="relative">
@@ -56,7 +56,7 @@ const Home = () => {
               trendingFunc={(e) => setTrendingOption(e.target.value)}
             />
           </div>
-          <div className="w-full  flex  gap-4  overflow-x-scroll py-4 mb-5 px-5 outline-none">
+          <div className="w-full h-auto flex  gap-4  overflow-x-scroll py-4 mb-5 px-5 outline-none">
             {allTrending.map((trending, indexTrending) => (
               <Trending key={indexTrending} trend={trending} />
             ))}

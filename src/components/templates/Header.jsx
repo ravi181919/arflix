@@ -19,7 +19,7 @@ const Header = ({ banner }) => {
         backgroundPosition: "50% 10%",
         backgroundSize: "cover",
       }}
-      className="h-[60vh] max-w-screen-lg rounded-sm mx-auto "
+      className="h-[60vh] max-w-screen-lg xl:max-w-full rounded-sm mx-auto "
     >
       <div className="h-full w-[60%] text-zinc-200 p-10  flex items-start justify-end flex-col">
         <div className="flex gap-1">

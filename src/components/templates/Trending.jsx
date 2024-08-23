@@ -2,15 +2,17 @@ import React from "react";
 
 const Trending = ({ trend }) => {
   return (
-    <div className="min-w-56 h-56`  rounded-md overflow-hidden  bg-zinc-700">
-      <div className="w-full h-1/2">
+    <div className="min-w-56 rounded-md overflow-hidden flex flex-col relative">
+      <div className="absolute h-full w-full bg-gradient-to-b from-[rgba(0,0,0,.01)] to-[rgba(0,0,0,1)]"></div>
+      <div
+       className="w-full ">
         <img
           className="w-full h-full object-cover"
-          src={`https://image.tmdb.org/t/p/original/${trend.backdrop_path} `}
+          src={`https://image.tmdb.org/t/p/original/${trend.poster_path || trend.backdrop_path} `}
           alt=""
         />
       </div>
-      <div className="flex flex-col py-2 px-2 w-full h-1/2 mt-2">
+      <div className="flex flex-col py-2 px-2 w-full  absolute justify-end h-full mb-2">
         <div className="flex">
           <h1 className="font-semibold text-xs py-2 whitespace-nowrap">
             {trend.title ||
