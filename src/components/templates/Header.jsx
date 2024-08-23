@@ -35,7 +35,9 @@ const Header = ({ banner }) => {
         </div>
         <p className="text-zinc-300 w-[70%] text-xs font-medium leading-[1.1]">
           {banner.overview.slice(0, 179)}
-          <Link className="text-red-500 opacity-95 ml-1">...more</Link>
+          <Link
+          to={`${banner.media_type}/details/${banner.id}`} 
+           className="text-red-500 opacity-95 ml-1">...more</Link>
         </p>
         <div className="flex gap-1 items-center justify-center mt-4">
           <h2 className="font-medium text-xs text-yellow-500">

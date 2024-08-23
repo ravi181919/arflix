@@ -37,7 +37,7 @@ const Topnav = () => {
             />
           )}
         </div>
-        <div className=" max-h-80 min-w-[45vw] rounded-sm overflow-auto absolute z-[1] top-full mt-1  bg-zinc-500 flex flex-col">
+        <div className=" max-h-80 min-w-[45vw] rounded-sm overflow-auto absolute z-[1] top-full mt-1  bg-white/30 backdrop-blur-lg flex flex-col">
           {apiData.map((data, dataIndex) => (
             <Link
               key={dataIndex}
