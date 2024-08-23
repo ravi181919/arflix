@@ -5,6 +5,7 @@ import Header from "./templates/Header";
 import axios from "../utils/axios";
 import Trending from "./templates/Trending";
 import Dropdown from "./templates/Dropdown";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   document.title = "| ARFLIX | Home |".toLocaleUpperCase() ;
@@ -58,7 +59,7 @@ const Home = () => {
           </div>
           <div className="w-full h-auto flex  gap-4  overflow-x-scroll py-4 mb-5 px-5 outline-none">
             {allTrending.map((trending, indexTrending) => (
-              <Trending key={indexTrending} trend={trending} />
+              <Link to={`/${trending.media_type}/details/${trending.id}`} ><Trending key={indexTrending} trend={trending} /></Link>
             ))}
           </div>
         </div>
