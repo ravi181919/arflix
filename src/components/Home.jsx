@@ -59,7 +59,7 @@ const Home = () => {
           </div>
           <div className="w-full h-auto flex  gap-4  overflow-x-scroll py-4 mb-5 px-5 outline-none">
             {allTrending.map((trending, indexTrending) => (
-              <Link to={`/${trending.media_type}/details/${trending.id}`} ><Trending key={indexTrending} trend={trending} /></Link>
+              <Link key={indexTrending} to={`/${trending.media_type}/details/${trending.id}`} ><Trending  trend={trending} /></Link>
             ))}
           </div>
         </div>
