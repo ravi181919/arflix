@@ -41,7 +41,7 @@ const Person = () => {
       refreshHandler();
     }, [category]);
     return people.length > 0 ? (
-      <div className="flex flex-col gap-4  h-screen pb-5">
+      <div className="flex flex-col gap-4 h-screen pb-5">
         <div className="flex w-full items-center px-5 justify-between ">
           <div className="flex items-center justify-center gap-2">
             <span
