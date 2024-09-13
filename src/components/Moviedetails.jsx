@@ -1,13 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import { asyncLoadMovie, removemovie } from "../store/actions/movieAction";
 import Topnav from "./templates/Topnav";
 import { BiSolidTv } from "react-icons/bi";
 import { CgArrowLongLeftC } from "react-icons/cg";
 import { FaStar } from "react-icons/fa6";
+import { FaPlay } from "react-icons/fa6";
 import Trending from "./templates/Trending";
 const Moviedetails = () => {
+
+  const locationName = useLocation();
   const [currentSection, setCurrentSection] = useState("overview");
   const { id } = useParams();
   const navigate = useNavigate();
@@ -66,6 +69,7 @@ const Moviedetails = () => {
 
       {/** part 2. show movie details */}
       <div className="w-full h-[90%] relative px-12 flex gap-10 items-center">
+
         {/** part 1. showing image of movie banner or poster */}
         <div className="w-[35%] h-full flex items-center">
           <div className="w-full h-full relative overflow-hidden rounded-md">
@@ -75,8 +79,15 @@ const Moviedetails = () => {
                 backgroundPosition: "50% 10%",
                 backgroundSize: "cover",
               }}
-              className="h-full w-full absolute top-0 left-0"
-            ></div>
+              className="h-full w-full absolute top-0 left-0 z-10"
+            >
+              <Link to={`${locationName}/trailer`} className="w-full h-full flex items-start p-5  justify-end">
+              <div className="flex gap-1 items-center px-4 py-2 rounded-md bg-white/80  w-fit">
+                <FaPlay className="text-red-500" />
+                <h2 className="text-xs font-bold text-black">Play Trailer</h2>
+              </div>
+              </Link>
+            </div>
             <img
               className="w-full h-full object-cover rounded-md saturate-150"
               src={`https://image.tmdb.org/t/p/original/${
@@ -111,7 +122,7 @@ const Moviedetails = () => {
               </span>
             </div>
           </div>
-          <div className="flex items-center gap-3 px-1 mt-3">
+          <div className="flex items-center gap-3 px-1 mt-1">
             <h3 className="text-xs font-medium leading-none border-r-[0.19vw] border-yellow-400 pr-2 text-yellow-400">
               {info.detail.release_date}
             </h3>
@@ -119,7 +130,6 @@ const Moviedetails = () => {
               {info.detail.runtime} <span className="text-red-400">min</span>
             </h3>
             <h3 className="text-xs font-medium leading-none  text-yellow-400">
-              F
               {info.detail.adult === false ? (
                 <span>
                   16<sup>+</sup>
@@ -133,12 +143,12 @@ const Moviedetails = () => {
           </div>
 
           {/** part 3. showing overview  */}
-          <div className="flex justify-between w-full mt-5 flex-col ">
+          <div className="flex justify-between w-full mt-1 flex-col ">
             <h1 className="font-medium w-fit text-xl py-1 px-2 border-b-2 border-red-500">
               {" "}
               Overview
             </h1>
-            <div className=" mt-4 flex flex-col gap-4 w-full px-10">
+            <div className=" mt-2 flex flex-col gap-2 w-full px-10">
               <p className="text-xs leading-4 font-medium w-[80%]">
                 {info.detail.overview}
               </p>
@@ -154,10 +164,59 @@ const Moviedetails = () => {
                   );
                 })}
               </div>
-
-             
             </div>
           </div>
+
+          {/** part 4. Available no */}
+          <div className=" w-full ">
+            <h1 className="font-medium w-fit text-xl py-1 px-2 border-b-2 border-red-500">
+              {" "}
+              Available
+            </h1>
+            <div className=" w-full flex items-center justify-center px-6">
+              {info.watchproviders &&
+                info.watchproviders.flatrate &&
+                info.watchproviders.flatrate.map((w) => (
+                  <div className="w-full flex gap-1 items-center flex-col justify-center mt-4">
+                    <img
+                      className="w-10 rounded-full"
+                      src={`https://image.tmdb.org/t/p/original/${w.logo_path} `}
+                    />
+                    <h2 className="text-xs font-medium whitespace-nowrap w-fit text-zinc-200">
+                     On Platforms
+                    </h2>
+                  </div>
+                ))}
+              {info.watchproviders &&
+                info.watchproviders.buy &&
+                info.watchproviders.buy.map((w) => (
+                  <div className="w-full flex gap-1 items-center flex-col justify-center mt-4 ">
+                    <img
+                      className="w-10 rounded-full"
+                      src={`https://image.tmdb.org/t/p/original/${w.logo_path} `}
+                    />
+                    <h2 className="text-xs whitespace-nowrap font-medium text-yellow-500">
+                      To Buy
+                    </h2>
+                  </div>
+                ))}
+              {info.watchproviders &&
+                info.watchproviders.rent &&
+                info.watchproviders.rent.map((w) => (
+                  <div className="w-full flex gap-1 items-center flex-col justify-center mt-4">
+                    <img
+                      className="w-10 rounded-full"
+                      src={`https://image.tmdb.org/t/p/original/${w.logo_path} `}
+                    />
+                    <h2 className="text-xs whitespace-nowrap font-bold text-red-500">
+                      On Rent
+                    </h2>
+                  </div>
+                ))}
+            </div>
+          </div>
+
+          {/** part 5. Related recommondation  */}
         </div>
       </div>
     </div>
