@@ -1,28 +1,35 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
+import {
+  Link,
+  Outlet,
+  useLocation,
+  useNavigate,
+  useParams,
+} from "react-router-dom";
 import { asyncLoadMovie, removemovie } from "../store/actions/movieAction";
 import Topnav from "./templates/Topnav";
 import { BiSolidTv } from "react-icons/bi";
 import { CgArrowLongLeftC } from "react-icons/cg";
 import { FaStar } from "react-icons/fa6";
 import { FaPlay } from "react-icons/fa6";
+import { ImArrowUpRight2 } from "react-icons/im";
 import Trending from "./templates/Trending";
-const Moviedetails = () => {
 
-  const locationName = useLocation();
+const Moviedetails = () => {
   const [currentSection, setCurrentSection] = useState("overview");
   const { id } = useParams();
   const navigate = useNavigate();
   const { info } = useSelector((state) => state.movie);
   const dispatch = useDispatch();
+  const { pathname } = useLocation();
 
   useEffect(() => {
     dispatch(asyncLoadMovie(id));
     return () => {
       dispatch(removemovie());
     };
-  }, []);
+  }, [id]);
 
   // Function to render content based on the current section
   const renderContent = () => {
@@ -39,9 +46,12 @@ const Moviedetails = () => {
         return <p>Please select a section.</p>;
     }
   };
+
+  document.title = `| arflix | moviedetails`;
+
   return info ? (
     <div
-      className="w-full h-screen relative text-zinc-300"
+      className="w-full h-screen overflow-hidden relative text-zinc-300"
       style={{
         background: `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5), rgba(0,0,0,.7)), url(${`https://image.tmdb.org/t/p/original/${info.detail.backdrop_path} `})`,
         backgroundPosition: "50% 10%",
@@ -65,27 +75,49 @@ const Moviedetails = () => {
           </h1>
         </div>
         <Topnav />
+        <div className="flex items-center justify-between gap-5">
+          <Link
+            to={`https://www.imdb.com/title/${info.detail.imdb_id}`}
+            className="flex gap-[1px] items-center"
+          >
+            <h1 className=" text-xs text-yellow-500">Imdb</h1>
+            <span className="text-red-600 ml-1 font-extrabold">
+              <ImArrowUpRight2 size={10} />
+            </span>
+          </Link>
+          <Link
+            to={info.detail.homepage}
+            className="flex gap-[1px] items-center"
+          >
+            <h1 className=" text-xs text-yellow-500">Home</h1>
+            <span className="text-red-600 ml-1 font-extrabold">
+              <ImArrowUpRight2 size={10} />
+            </span>
+          </Link>
+        </div>
       </div>
 
       {/** part 2. show movie details */}
       <div className="w-full h-[90%] relative px-12 flex gap-10 items-center">
-
         {/** part 1. showing image of movie banner or poster */}
-        <div className="w-[35%] h-full flex items-center">
-          <div className="w-full h-full relative overflow-hidden rounded-md">
+        <div className="w-[35%] h-full flex items-center py-2">
+          <div className="w-full h-full  relative overflow-hidden rounded-md">
             <div
               style={{
                 background: `linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.3), rgba(0,0,0,.4))`,
                 backgroundPosition: "50% 10%",
                 backgroundSize: "cover",
               }}
-              className="h-full w-full absolute top-0 left-0 z-10"
+              className="h-full w-full absolute top-0 left-0 z-[5]"
             >
-              <Link to={`${locationName}/trailer`} className="w-full h-full flex items-start p-5  justify-end">
-              <div className="flex gap-1 items-center px-4 py-2 rounded-md bg-white/80  w-fit">
-                <FaPlay className="text-red-500" />
-                <h2 className="text-xs font-bold text-black">Play Trailer</h2>
-              </div>
+              <Link
+                to={`${pathname}/trailer`}
+                className="w-full h-full absolute  flex items-center p-5  justify-center"
+              >
+                <div className="flex gap-1 items-center px-4 py-2 rounded-md bg-white/80  w-fit">
+                  <FaPlay className="text-red-500" />
+                  <h2 className="text-xs font-bold text-black">Play Trailer</h2>
+                </div>
               </Link>
             </div>
             <img
@@ -140,6 +172,18 @@ const Moviedetails = () => {
                 </span>
               )}
             </h3>
+            <div className="flex flex-row gap-2 border-l-2 border-yellow-500 px-2">
+              {info.detail.genres.map((el) => {
+                return (
+                  <h2
+                    key={el.id}
+                    className="text-xs font-medium leading-none text-yellow-500"
+                  >
+                    {el.name},
+                  </h2>
+                );
+              })}
+            </div>
           </div>
 
           {/** part 3. showing overview  */}
@@ -148,22 +192,10 @@ const Moviedetails = () => {
               {" "}
               Overview
             </h1>
-            <div className=" mt-2 flex flex-col gap-2 w-full px-10">
+            <div className=" mt-2 w-full px-10">
               <p className="text-xs leading-4 font-medium w-[80%]">
                 {info.detail.overview}
               </p>
-              <div className="flex flex-row gap-2">
-                {info.detail.genres.map((el) => {
-                  return (
-                    <h2
-                      key={el.id}
-                      className="text-xs font-medium text-yellow-500"
-                    >
-                      {el.name},
-                    </h2>
-                  );
-                })}
-              </div>
             </div>
           </div>
 
@@ -173,52 +205,92 @@ const Moviedetails = () => {
               {" "}
               Available
             </h1>
-            <div className=" w-full flex items-center justify-center px-6">
-              {info.watchproviders &&
-                info.watchproviders.flatrate &&
-                info.watchproviders.flatrate.map((w) => (
-                  <div className="w-full flex gap-1 items-center flex-col justify-center mt-4">
-                    <img
-                      className="w-10 rounded-full"
-                      src={`https://image.tmdb.org/t/p/original/${w.logo_path} `}
-                    />
-                    <h2 className="text-xs font-medium whitespace-nowrap w-fit text-zinc-200">
-                     On Platforms
-                    </h2>
-                  </div>
-                ))}
-              {info.watchproviders &&
-                info.watchproviders.buy &&
-                info.watchproviders.buy.map((w) => (
-                  <div className="w-full flex gap-1 items-center flex-col justify-center mt-4 ">
-                    <img
-                      className="w-10 rounded-full"
-                      src={`https://image.tmdb.org/t/p/original/${w.logo_path} `}
-                    />
-                    <h2 className="text-xs whitespace-nowrap font-medium text-yellow-500">
-                      To Buy
-                    </h2>
-                  </div>
-                ))}
-              {info.watchproviders &&
-                info.watchproviders.rent &&
-                info.watchproviders.rent.map((w) => (
-                  <div className="w-full flex gap-1 items-center flex-col justify-center mt-4">
-                    <img
-                      className="w-10 rounded-full"
-                      src={`https://image.tmdb.org/t/p/original/${w.logo_path} `}
-                    />
-                    <h2 className="text-xs whitespace-nowrap font-bold text-red-500">
-                      On Rent
-                    </h2>
-                  </div>
-                ))}
-            </div>
+            {info.watchproviders ? (
+              <div className=" w-full flex items-center justify-center px-6">
+                {info.watchproviders &&
+                  info.watchproviders.flatrate &&
+                  info.watchproviders.flatrate.map((w, i) => (
+                    <div
+                      key={i}
+                      className="w-full flex gap-1 items-center flex-col justify-center mt-4"
+                    >
+                      <img
+                        className="w-10 rounded-full"
+                        src={`https://image.tmdb.org/t/p/original/${w.logo_path} `}
+                      />
+                      <h2 className="text-xs font-medium whitespace-nowrap w-fit text-zinc-200">
+                        On Platforms
+                      </h2>
+                    </div>
+                  ))}
+                {info.watchproviders &&
+                  info.watchproviders.buy &&
+                  info.watchproviders.buy.map((w, i) => (
+                    <div
+                      key={i}
+                      className="w-full flex gap-1 items-center flex-col justify-center mt-4 "
+                    >
+                      <img
+                        className="w-10 rounded-full"
+                        src={`https://image.tmdb.org/t/p/original/${w.logo_path} `}
+                      />
+                      <h2 className="text-xs whitespace-nowrap font-medium text-yellow-500">
+                        To Buy
+                      </h2>
+                    </div>
+                  ))}
+                {info.watchproviders &&
+                  info.watchproviders.rent &&
+                  info.watchproviders.rent.map((w, i) => (
+                    <div
+                      key={i}
+                      className="w-full flex gap-1 items-center flex-col justify-center mt-4"
+                    >
+                      <img
+                        className="w-10 rounded-full"
+                        src={`https://image.tmdb.org/t/p/original/${w.logo_path} `}
+                      />
+                      <h2 className="text-xs whitespace-nowrap font-bold text-red-500">
+                        On Rent
+                      </h2>
+                    </div>
+                  ))}
+              </div>
+            ) : (
+              <h1 className="font-medium text-md text-red-500 py-1 px-2 text-center w-full ">
+                {" "}
+                Providers Not Available
+              </h1>
+            )}
           </div>
 
-          {/** part 5. Related recommondation  */}
+          {/** part 5. Related recommendation  */}
+          <h1 className="font-medium w-fit text-xl py-1 px-2 border-b-2 border-red-500">
+            {" "}
+            Recommendations
+          </h1>
+          <div className="w-full max-h-60  flex  gap-4  overflow-x-scroll overflow-y-hidden py-4 mb-2 mt-1 outline-none">
+            {info.recommendations.length > 0
+              ? info.recommendations.map((data, index) => (
+                  <Link
+                    key={index}
+                    to={`/${data.media_type}/details/${data.id}`}
+                  >
+                    <Trending trend={data} />
+                  </Link>
+                ))
+              : info.similar.map((data, index) => (
+                  <Link
+                    key={index}
+                    to={`/${data.media_type}/details/${data.id}`}
+                  >
+                    <Trending trend={data} />
+                  </Link>
+                ))}
+          </div>
         </div>
       </div>
+      <Outlet />
     </div>
   ) : (
     <h1>Loading</h1>

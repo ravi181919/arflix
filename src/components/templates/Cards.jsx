@@ -11,7 +11,7 @@ const Cards = ({ trending, title }) => {
           key={index}
           className="flex flex-wrap w-52 h-auto py-4 overflow-hidden"
         >
-          <div className="w-full h-[70%] rounded-sm overflow-hidden">
+          <div className="w-full min-h-[70%] rounded-sm overflow-hidden">
             <img
               className="w-full h-full object-cover "
               src={`https://image.tmdb.org/t/p/original/${

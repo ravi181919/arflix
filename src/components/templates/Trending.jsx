@@ -1,8 +1,10 @@
 import React from "react";
 
 const Trending = ({ trend }) => {
+  
   return (
-    <div className="min-w-56 rounded-md overflow-hidden flex flex-col relative">
+    
+    <div className="min-w-56 rounded-md h-full overflow-hidden flex flex-col relative">
       <div className="absolute h-full w-full bg-gradient-to-b from-[rgba(0,0,0,.01)] to-[rgba(0,0,0,1)]"></div>
       <div
        className="w-full ">
@@ -25,12 +27,13 @@ const Trending = ({ trend }) => {
           </h1>
         </div>
         <p className="text-zinc-300 w-full text-xs font-medium leading-[1.1]">
-          {trend.overview.slice(0, 79)}
+          {trend.overview && trend.overview.slice(0, 79)}
           <span className="text-red-500 opacity-95 ml-1">...more</span>
         </p>
       </div>
     </div>
   );
+  
 };
 
 export default Trending;
