@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import ISO6391 from "iso-639-1";
 import { MdOutlineAddCircle } from "react-icons/md";
 import { FaCircleCheck } from "react-icons/fa6";
 const Header = ({ banner }) => {
   const [addToPlaylist, setAddToPlaylist] = useState(false);
-
+  const {pathname} = useLocation()
   function getLanguageName(code) {
     return ISO6391.getName(code) || "Unknown Language";
   }
@@ -51,7 +51,7 @@ const Header = ({ banner }) => {
           </h2>
         </div>
         <div className="flex gap-6 mt-4">
-          <Link className="bg-red-600 hover:saturate-150 text-white rounded-md py-2 px-5 font-medium">
+          <Link  className="bg-red-600 hover:saturate-150 text-white rounded-md py-2 px-5 font-medium">
             Play Tailor
           </Link>
           <button

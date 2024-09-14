@@ -200,7 +200,7 @@ const Moviedetails = () => {
           </div>
 
           {/** part 4. Available no */}
-          <div className=" w-full ">
+          <div className=" w-full  ">
             <h1 className="font-medium w-fit text-xl py-1 px-2 border-b-2 border-red-500">
               {" "}
               Available

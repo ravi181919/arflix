@@ -6,7 +6,8 @@ const Trending = ({ trend }) => {
     
     <div className="min-w-56 rounded-md h-full overflow-hidden flex flex-col relative">
       <div className="absolute h-full w-full bg-gradient-to-b from-[rgba(0,0,0,.01)] to-[rgba(0,0,0,1)]"></div>
-      <div
+      {trend ? <>
+        <div
        className="w-full ">
         <img
           className="w-full h-full object-cover"
@@ -31,6 +32,10 @@ const Trending = ({ trend }) => {
           <span className="text-red-500 opacity-95 ml-1">...more</span>
         </p>
       </div>
+      </>: <>
+      <h1 className="text-red-500 font-bold text-2xl text-center">Sorry, recommendations is not available !</h1>
+      </>}
+     
     </div>
   );
   
