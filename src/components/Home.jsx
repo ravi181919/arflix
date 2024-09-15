@@ -6,6 +6,7 @@ import axios from "../utils/axios";
 import Trending from "./templates/Trending";
 import Dropdown from "./templates/Dropdown";
 import { Link } from "react-router-dom";
+import Loading from "./Loading";
 
 const Home = () => {
   document.title = "| ARFLIX | Home |".toLocaleUpperCase() ;
@@ -66,7 +67,7 @@ const Home = () => {
       </div>
     </div>
   ) : (
-    <h1>Loading...</h1>
+    <Loading />
   );
 };
 

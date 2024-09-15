@@ -15,7 +15,8 @@ import { FaPlay } from "react-icons/fa6";
 import { ImArrowUpRight2 } from "react-icons/im";
 import Trending from "./templates/Trending";
 import { asyncLoadtv, removetv } from "../store/actions/tvAction";
-import comingsoon from "/comingsoon.jpg";
+import noImage from "/nopicture.jpg";
+import Loading from "./Loading";
 
 const Tvdetails = () => {
   const [currentSection, setCurrentSection] = useState("overview");
@@ -285,34 +286,40 @@ const Tvdetails = () => {
           </div>
         </div>
       </div>
-      
+
       <Outlet />
-      <div className="w-full relative  mb-5 mt-5 px-12 ">
-      <h1 className="font-medium w-fit text-xl py-1 px-2 border-b-4 border-red-500">
-              Seasons
-            </h1>
-       <div className="flex gap-5 relative  overflow-y-hidden overflow-x-auto w-full py-5">
-       
-       {info.detail.seasons.map((s, i) => (
-          <div key={i}  className="min-w-52 h-80 relative overflow-hidden">
-            <img
-              className="w-full h-[90%] object-cover saturate-150 rounded-md"
-              src={`https://image.tmdb.org/t/p/original/${s.poster_path ? s.poster_path : comingsoon} `}
-              alt=''
-            />
-            <h1 className="font-bold text-zinc-100 text-lg py-2 absolute  whitespace-nowrap">
-              {s.title ||
-                s.name ||
-                s.original_title ||
-                s.original_name}
-            </h1>
-          </div>
-        ))}
-       </div>
+
+      <div className="w-full relative  px-12 ">
+        <h1 className="font-medium w-fit text-xl py-1 px-2 border-b-4 border-red-500">
+          Seasons
+        </h1>
+        <div className="flex gap-5 relative  overflow-y-hidden overflow-x-auto w-full py-5">
+          {info.detail.seasons.map((s, i) => (
+            <div key={i} className="min-w-56 h-80 relative overflow-hidden">
+              {s.poster_path ? (
+                <img
+                  className="w-full h-[90%] object-cover saturate-150 rounded-md"
+                  src={`https://image.tmdb.org/t/p/original/${s.poster_path} `}
+                  alt=""
+                />
+              ) : (
+                <img
+                  className="w-[90%] h-[90%] object-cover saturate-150 rounded-md"
+                  src={noImage}
+                  alt=""
+                />
+              )}
+
+              <h1 className="font-bold text-zinc-100 text-lg py-2 absolute  whitespace-nowrap">
+                {s.title || s.name || s.original_title || s.original_name}
+              </h1>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   ) : (
-    <h1>Loading</h1>
+    <Loading />
   );
 };
 

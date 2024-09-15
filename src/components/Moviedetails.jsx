@@ -15,6 +15,7 @@ import { FaStar } from "react-icons/fa6";
 import { FaPlay } from "react-icons/fa6";
 import { ImArrowUpRight2 } from "react-icons/im";
 import Trending from "./templates/Trending";
+import Loading from "./Loading";
 
 const Moviedetails = () => {
   const [currentSection, setCurrentSection] = useState("overview");
@@ -293,7 +294,7 @@ const Moviedetails = () => {
       <Outlet />
     </div>
   ) : (
-    <h1>Loading</h1>
+    <Loading />
   );
 };
 

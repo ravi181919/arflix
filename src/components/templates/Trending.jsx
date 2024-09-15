@@ -1,5 +1,5 @@
 import React from "react";
-
+import comingsoon from '/comingsoon.jpg'
 const Trending = ({ trend }) => {
   
   return (
@@ -9,11 +9,16 @@ const Trending = ({ trend }) => {
       {trend ? <>
         <div
        className="w-full ">
-        <img
+        {trend.poster_path || trend.backdrop_path ?  <img
           className="w-full h-full object-cover"
           src={`https://image.tmdb.org/t/p/original/${trend.poster_path || trend.backdrop_path} `}
           alt=""
-        />
+        /> :  <img
+        className="w-full h-full object-cover"
+        src={comingsoon}
+        alt=""
+      /> }
+       
       </div>
       <div className="flex flex-col py-2 px-2 w-full  absolute justify-end h-full mb-2">
         <div className="flex">
