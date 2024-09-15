@@ -19,7 +19,7 @@ const Topnav = () => {
     tmdbApiCall();
   }, [searchText]);
   return (
-    <div className="w-full relative ">
+    <div className="w-full relative z-10 ">
       <div className=" max-w-screen-sm mx-auto my-1 px-2 md:px-0 overflow-hidden gap-2 flex flex-col items-center">
         <div className=" flex items-center justify-start   w-full h-12 rounded-md ">
           <IoSearch className="text-2xl ml-5 text-red-600 cursor-pointer" />

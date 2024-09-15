@@ -80,7 +80,7 @@ const Moviedetails = () => {
             to={`https://www.imdb.com/title/${info.detail.imdb_id}`}
             className="flex gap-[1px] items-center"
           >
-            <h1 className=" text-xs text-yellow-500">Imdb</h1>
+            <h1 className=" text-xs font-medium text-yellow-500">Imdb</h1>
             <span className="text-red-600 ml-1 font-extrabold">
               <ImArrowUpRight2 size={10} />
             </span>
@@ -89,7 +89,7 @@ const Moviedetails = () => {
             to={info.detail.homepage}
             className="flex gap-[1px] items-center"
           >
-            <h1 className=" text-xs text-yellow-500">Home</h1>
+            <h1 className=" text-xs font-medium text-yellow-500">Home</h1>
             <span className="text-red-600 ml-1 font-extrabold">
               <ImArrowUpRight2 size={10} />
             </span>
