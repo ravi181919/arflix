@@ -70,10 +70,10 @@ const Moviedetails = () => {
           >
             <CgArrowLongLeftC />
           </span>
-          <h1 className="flex text-lg font-bold items-center gap-2">
-            <BiSolidTv className="text-red-600" />
-            <span>ARFLIX</span>
-          </h1>
+          <Link to={`/`} ><h1 className="flex text-lg font-bold items-center gap-2">
+          <BiSolidTv className="text-red-600" />
+          <span>ARFLIX</span>
+        </h1></Link>
         </div>
         <Topnav />
         <div className="flex items-center justify-between gap-5">

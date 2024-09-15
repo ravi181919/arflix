@@ -1,8 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import comingsoon from '/comingsoon.jpg'
+import comingsoon from "/comingsoon.jpg";
 const Cards = ({ trending, title }) => {
- 
   return (
     <div className="w-full relative flex flex-wrap gap-4 items-start justify-center bg-zinc-800">
       {trending.map((items, index) => (
@@ -12,15 +11,21 @@ const Cards = ({ trending, title }) => {
           className="flex flex-wrap w-52 h-auto  py-4 overflow-hidden"
         >
           <div className="w-full min-h-[70%] rounded-sm overflow-hidden">
-            {items.poster_path || items.backdrop_path || items.profile_path ?  <img
-              className="w-full h-full object-cover "
-              src={`https://image.tmdb.org/t/p/original/${
-                items.poster_path || items.backdrop_path || items.profile_path } `}
-              alt=""
-            /> : <img className="w-full h-full object-cover "
-            src={comingsoon}
-            alt="" />} 
-           
+            {items.poster_path || items.backdrop_path || items.profile_path ? (
+              <img
+                className="w-full h-full object-cover "
+                src={`https://image.tmdb.org/t/p/original/${
+                  items.poster_path || items.backdrop_path || items.profile_path
+                } `}
+                alt=""
+              />
+            ) : (
+              <img
+                className="w-full h-full object-cover "
+                src={comingsoon}
+                alt=""
+              />
+            )}
           </div>
           <div className="flex flex-col  h-[30%]">
             <div className="flex">

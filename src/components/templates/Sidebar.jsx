@@ -11,10 +11,10 @@ const Sidebar = () => {
   return (
     <div className="w-full h-full ">
       <div className="p-8 h-full w-full">
-        <h1 className="flex text-lg font-bold items-center gap-2">
+        <Link to={`/`} ><h1 className="flex text-lg font-bold items-center gap-2">
           <BiSolidTv className="text-red-600" />
           <span>ARFLIX</span>
-        </h1>
+        </h1></Link>
 
         <hr className="border-none h-[1px] bg-red-600 w-full " />
 

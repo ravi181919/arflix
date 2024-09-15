@@ -6,6 +6,7 @@ import Dropdown from "./templates/Dropdown";
 import axios from "../utils/axios";
 import Cards from "./templates/Cards";
 import InfiniteScroll from "react-infinite-scroll-component";
+import Loading from "./Loading";
 
 const Popular = () => {
 
@@ -84,7 +85,7 @@ const Popular = () => {
       </InfiniteScroll>
     </div>
   ) : (
-    <h1>Loding.....</h1>
+    <Loading />
   );
 };
 

@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "../utils/axios";
 import Cards from "./templates/Cards";
 import InfiniteScroll from "react-infinite-scroll-component";
+import Loading from './Loading';
 const Person = () => {
     const navigate = useNavigate();
     const [category, setCategory] = useState("popular");
@@ -71,7 +72,7 @@ const Person = () => {
         </InfiniteScroll>
       </div>
     ) : (
-      <h1>Loding.....</h1>
+      <Loading />
     );
 }
 
