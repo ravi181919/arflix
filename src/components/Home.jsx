@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 import Loading from "./Loading";
 
 const Home = () => {
-  document.title = "| ARFLIX | Home |".toLocaleUpperCase() ;
+  document.title = "| ARFLIX | Home |".toLocaleUpperCase();
   const [banner, setBanner] = useState(null);
   const [allTrending, setAllTrending] = useState(null);
   const [trendingOption, setTrendingOption] = useState("all");
@@ -60,7 +60,12 @@ const Home = () => {
           </div>
           <div className="w-full h-auto flex  gap-4  overflow-x-scroll py-4 mb-5 px-5 outline-none">
             {allTrending.map((trending, indexTrending) => (
-              <Link key={indexTrending} to={`/${trending.media_type}/details/${trending.id}`} ><Trending  trend={trending} /></Link>
+              <Link
+                key={indexTrending}
+                to={`/${trending.media_type}/details/${trending.id}`}
+              >
+                <Trending trend={trending} />
+              </Link>
             ))}
           </div>
         </div>

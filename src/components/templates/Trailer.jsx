@@ -5,7 +5,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import Topnav from "./Topnav";
 import { BiSolidTv } from "react-icons/bi";
 import { CgArrowLongLeftC } from "react-icons/cg";
-import { ImArrowUpRight2 } from "react-icons/im";
+
 
 const Trailer = () => {
   const navigate = useNavigate();
@@ -13,7 +13,7 @@ const Trailer = () => {
   const category = pathname.includes("movie") ? "movie" : "tv";
   const palyTrailer = useSelector((state) => state[category].info.videos);
   return (
-    <div className="absolute z-10 top-0 left-0 h-screen flex flex-col items-center justify-center w-screen bg-black/90">
+    <div className="absolute z-10 top-0 left-0 h-screen overflow-hidden flex flex-col items-center justify-center w-screen bg-black/90">
       <div className="w-full  flex items-center relative top-0 left-0 px-5 ">
         <div className="flex items-center justify-center gap-2">
           <span

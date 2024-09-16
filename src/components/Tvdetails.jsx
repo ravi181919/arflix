@@ -33,21 +33,7 @@ const Tvdetails = () => {
     };
   }, [id]);
 
-  // Function to render content based on the current section
-  const renderContent = () => {
-    switch (currentSection) {
-      case "overview":
-        return <p>This is the Overview content.</p>;
-      case "details":
-        return <p>This is the Details content.</p>;
-      case "tailors":
-        return <p>This is the Tailors content.</p>;
-      case "likes":
-        return <p>This is the Likes content.</p>;
-      default:
-        return <p>Please select a section.</p>;
-    }
-  };
+  
 
   document.title = `| arflix | tvdetails`;
 
@@ -71,10 +57,12 @@ const Tvdetails = () => {
           >
             <CgArrowLongLeftC />
           </span>
-          <Link to={`/`} ><h1 className="flex text-lg font-bold items-center gap-2">
-          <BiSolidTv className="text-red-600" />
-          <span>ARFLIX</span>
-        </h1></Link>
+          <Link to={`/`}>
+            <h1 className="flex text-lg font-bold items-center gap-2">
+              <BiSolidTv className="text-red-600" />
+              <span>ARFLIX</span>
+            </h1>
+          </Link>
         </div>
         <Topnav />
 
@@ -287,8 +275,6 @@ const Tvdetails = () => {
         </div>
       </div>
 
-      <Outlet />
-
       <div className="w-full relative  px-12 ">
         <h1 className="font-medium w-fit text-xl py-1 px-2 border-b-4 border-red-500">
           Seasons
@@ -317,6 +303,7 @@ const Tvdetails = () => {
           ))}
         </div>
       </div>
+      <Outlet />
     </div>
   ) : (
     <Loading />
