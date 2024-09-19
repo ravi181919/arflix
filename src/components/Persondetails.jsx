@@ -22,7 +22,7 @@ const Persondetails = () => {
   const navigate = useNavigate();
   const { info } = useSelector((state) => state.person);
   const dispatch = useDispatch();
-  const { isAuthenticated , loginWithRedirect} = useAuth0();
+  const { isAuthenticated, loginWithRedirect } = useAuth0();
 
   useEffect(() => {
     dispatch(asyncLoadperson(id));
@@ -258,10 +258,10 @@ const Persondetails = () => {
   ) : (
     <div className="bg-zinc-800 h-screen w-full flex items-center justify-center">
       <button
-              onClick={() => loginWithRedirect()}
-              className="flex items-center gap-2 duration-300 text-xl leading-none  font-medium hover:bg-red-600 hover:text-white text-zinc-400 p-4 rounded-md"
-            >
-            <LuLogIn /> <h1>Login</h1>
+        onClick={() => loginWithRedirect()}
+        className="flex items-center gap-2 duration-300 text-xl leading-none  font-medium hover:bg-red-600 hover:text-white text-zinc-400 p-4 rounded-md"
+      >
+        <LuLogIn /> <h1>Login</h1>
       </button>
     </div>
   );

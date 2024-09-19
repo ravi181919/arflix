@@ -5,14 +5,16 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import Topnav from "./Topnav";
 import { BiSolidTv } from "react-icons/bi";
 import { CgArrowLongLeftC } from "react-icons/cg";
-
+import { LuLogIn } from "react-icons/lu";
+import { useAuth0 } from "@auth0/auth0-react";
 
 const Trailer = () => {
+  const { isAuthenticated, loginWithRedirect } = useAuth0();
   const navigate = useNavigate();
   const { pathname } = useLocation();
   const category = pathname.includes("movie") ? "movie" : "tv";
   const palyTrailer = useSelector((state) => state[category].info.videos);
-  return (
+  return isAuthenticated ? (
     <div className="absolute z-10 top-0 left-0 h-screen overflow-hidden flex flex-col items-center justify-center w-screen bg-black/90">
       <div className="w-full  flex items-center relative top-0 left-0 px-5 ">
         <div className="flex items-center justify-center gap-2">
@@ -50,6 +52,15 @@ const Trailer = () => {
           </p>
         </div>
       )}
+    </div>
+  ) : (
+    <div className="bg-zinc-800 h-screen w-full flex items-center justify-center">
+      <button
+        onClick={() => loginWithRedirect()}
+        className="flex items-center gap-2 duration-300 text-xl leading-none  font-medium hover:bg-red-600 hover:text-white text-zinc-400 p-4 rounded-md"
+      >
+        <LuLogIn /> <h1>Login</h1>
+      </button>
     </div>
   );
 };

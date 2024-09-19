@@ -80,7 +80,7 @@ console.log(user);
                 <h1 className="text-sm leading-none font-medium">{user.name}</h1>
               </> 
             )}
-          </Link>
+          </Link> 
           {isAuthenticated ? (
             <button
               onClick={() =>
