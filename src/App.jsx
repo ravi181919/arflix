@@ -16,18 +16,18 @@ const App = () => {
     <div className="h-screen w-full bg-zinc-800 text-white">
       <Routes>
         <Route path="/arflix/" element={<Home />} />
-        <Route path="/trending" element={<Trendingnow />} />
-        <Route path="/popular" element={<Popular />} />
-        <Route path="/movie" element={<Movie />} />
-        <Route path="/movie/details/:id" element={<Moviedetails />}>
-          <Route path="/movie/details/:id/trailer" element={<Trailer />} />
+        <Route path="/arflix/trending" element={<Trendingnow />} />
+        <Route path="/arflix/popular" element={<Popular />} />
+        <Route path="/arflix/movie" element={<Movie />} />
+        <Route path="/arflix/movie/details/:id" element={<Moviedetails />}>
+          <Route path="/arflix/movie/details/:id/trailer" element={<Trailer />} />
         </Route>
-        <Route path="/tvshow" element={<Tvshow />} />
-        <Route path="/tv/details/:id" element={<Tvdetails />} >
-        <Route path="/tv/details/:id/trailer" element={<Trailer />} />
+        <Route path="/arflix/tvshow" element={<Tvshow />} />
+        <Route path="/arflix/tv/details/:id" element={<Tvdetails />}>
+          <Route path="/arflix/tv/details/:id/trailer" element={<Trailer />} />
         </Route>
-        <Route path="/person" element={<Person />} />
-        <Route path="/person/details/:id" element={<Persondetails />} />
+        <Route path="/arflix/person" element={<Person />} />
+        <Route path="/arflix/person/details/:id" element={<Persondetails />} />
       </Routes>
     </div>
   );
