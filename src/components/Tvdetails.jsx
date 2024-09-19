@@ -17,9 +17,11 @@ import Trending from "./templates/Trending";
 import { asyncLoadtv, removetv } from "../store/actions/tvAction";
 import noImage from "/nopicture.jpg";
 import Loading from "./Loading";
+import { LuLogIn } from "react-icons/lu";
+import { useAuth0 } from "@auth0/auth0-react";
 
 const Tvdetails = () => {
-  const [currentSection, setCurrentSection] = useState("overview");
+  const { isAuthenticated, loginWithRedirect } = useAuth0();
   const { id } = useParams();
   const navigate = useNavigate();
   const { info } = useSelector((state) => state.tv);
@@ -37,7 +39,7 @@ const Tvdetails = () => {
 
   document.title = `| arflix | tvdetails`;
 
-  return info ? (
+  return isAuthenticated ? info ? (
     <div
       className="w-full h-auto overflow-y-auto  relative text-zinc-300"
       style={{
@@ -97,13 +99,23 @@ const Tvdetails = () => {
                 </div>
               </Link>
             </div>
-            <img
-              className="w-full h-full object-cover rounded-md saturate-150"
-              src={`https://image.tmdb.org/t/p/original/${
-                info.detail.poster_path || info.detail.backdrop_path
-              } `}
-              alt=""
-            />
+            {info.detail.poster_path || info.detail.backdrop_path ? (
+              <img
+                className="w-full h-full object-cover rounded-md saturate-150"
+                src={`https://image.tmdb.org/t/p/original/${
+                  info.detail.poster_path ||
+                  info.detail.backdrop_path ||
+                  nopicture
+                } `}
+                alt=""
+              />
+            ) : (
+              <img
+                className="w-full h-full object-cover rounded-md saturate-150"
+                src={noImage}
+                alt=""
+              />
+            )}
           </div>
         </div>
 
@@ -307,7 +319,14 @@ const Tvdetails = () => {
     </div>
   ) : (
     <Loading />
-  );
+  ) :  <div className="bg-zinc-800 h-screen w-full flex items-center justify-center">
+  <button
+    onClick={() => loginWithRedirect()}
+    className="flex items-center gap-2 duration-300 text-xl leading-none  font-medium hover:bg-red-600 hover:text-white text-zinc-400 p-4 rounded-md"
+  >
+    <LuLogIn /> <h1>Login</h1>
+  </button>
+</div>
 };
 
 export default Tvdetails;
