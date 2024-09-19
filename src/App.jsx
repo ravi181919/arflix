@@ -15,7 +15,7 @@ const App = () => {
   return (
     <div className="h-screen w-full bg-zinc-800 text-white">
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/arflix/" element={<Home />} />
         <Route path="/trending" element={<Trendingnow />} />
         <Route path="/popular" element={<Popular />} />
         <Route path="/movie" element={<Movie />} />
