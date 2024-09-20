@@ -7,17 +7,17 @@ import { store } from "./store/store.jsx";
 import { Auth0Provider } from "@auth0/auth0-react";
 
 createRoot(document.getElementById("root")).render(
-  <Auth0Provider
-    domain="dev-w7r2kny0v882g5r7.us.auth0.com"
-    clientId="DoqTQYBpfZ4x1Pry6dsvNJLFiyeUwVrj"
-    authorizationParams={{
-      redirect_uri: window.location.origin,
-    }}
-  >
-    <Provider store={store}>
-      <BrowserRouter>
+  <Provider store={store}>
+    <BrowserRouter>
+      <Auth0Provider
+        domain= {import.meta.env.VITE_APP_DOMAIN_API}
+        clientId= {import.meta.env.VITE_APP_CLIENT_ID}
+        authorizationParams={{
+          redirect_uri: window.location.origin,
+        }}
+      >
         <App />
-      </BrowserRouter>
-    </Provider>
-  </Auth0Provider>
+      </Auth0Provider>
+    </BrowserRouter>
+  </Provider>
 );
