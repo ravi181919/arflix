@@ -14,8 +14,8 @@ import Trailer from "./components/templates/Trailer";
 const App = () => {
   return (
     <div className="h-screen w-full bg-zinc-800 text-white">
-      <Routes>
-        <Route path="" element={<Home />} />
+      <Routes >
+        <Route path="/arflix" element={<Home />} />
         <Route path="/arflix/" element={<Home />} />
         <Route path="/arflix/trending" element={<Trendingnow />} />
         <Route path="/arflix/popular" element={<Popular />} />
