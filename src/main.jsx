@@ -8,12 +8,12 @@ import { Auth0Provider } from "@auth0/auth0-react";
 
 createRoot(document.getElementById("root")).render(
   <Provider store={store}>
-    <BrowserRouter basename="/arflix/">
+    <BrowserRouter>
       <Auth0Provider
         domain= {import.meta.env.VITE_APP_DOMAIN_API}
         clientId= {import.meta.env.VITE_APP_CLIENT_ID}
         authorizationParams={{
-          redirect_uri: window.location.origin + "/arflix/",
+          redirect_uri: window.location.origin,
         }}
       >
         <App />
