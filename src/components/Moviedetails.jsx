@@ -33,9 +33,7 @@ const Moviedetails = () => {
       dispatch(removemovie());
     };
   }, [id]);
-  console.log(pathname);
   
-
   document.title = `| arflix | moviedetails`;
 
   return isAuthenticated ? (

@@ -14,7 +14,6 @@ import { LuLogOut } from "react-icons/lu";
 const Sidebar = () => {
   const { isAuthenticated, logout, user,  loginWithRedirect} =
     useAuth0();
-console.log(user);
 
   return (
     <div className="w-full h-full ">
