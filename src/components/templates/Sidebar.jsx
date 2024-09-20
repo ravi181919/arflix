@@ -19,7 +19,7 @@ console.log(user);
   return (
     <div className="w-full h-full ">
       <div className="p-8 h-full w-full">
-        <Link to={`/`}>
+        <Link to={`/arflix/`}>
           <h1 className="flex text-lg font-bold items-center gap-2">
             <BiSolidTv className="text-red-600" />
             <span>ARFLIX</span>
@@ -30,31 +30,31 @@ console.log(user);
 
         <nav className="flex flex-col gap-3 mt-6 ">
           <Link
-            to={"/trending"}
+            to={"/arflix/trending"}
             className="flex items-center gap-2 duration-300 text-sm leading-none  font-medium hover:bg-red-600 hover:text-white text-zinc-400 p-4 rounded-md"
           >
             <FaFire /> Trending
           </Link>
           <Link
-            to={"/popular"}
+            to={"/arflix/popular"}
             className="flex items-center gap-2 duration-300 text-sm leading-none  font-medium hover:bg-red-600 hover:text-white text-zinc-400 p-4 rounded-md"
           >
             <PiShootingStarFill /> Popular
           </Link>
           <Link
-            to={"/movie"}
+            to={"/arflix/movie"}
             className="flex items-center gap-2 duration-300 text-sm leading-none  font-medium hover:bg-red-600 hover:text-white text-zinc-400 p-4 rounded-md"
           >
             <BiSolidCameraMovie /> Movies
           </Link>
           <Link
-            to={"./tvshow"}
+            to={"/arflix/tvshow"}
             className="flex items-center gap-2 duration-300 text-sm leading-none  font-medium hover:bg-red-600 hover:text-white text-zinc-400 p-4 rounded-md"
           >
             <FiTv /> Tv Show
           </Link>
           <Link
-            to={"./person"}
+            to={"/arflix/person"}
             className="flex items-center gap-2 duration-300 text-sm leading-none  font-medium hover:bg-red-600 hover:text-white text-zinc-400 p-4 rounded-md"
           >
             <RiTeamFill /> Stars

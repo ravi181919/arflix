@@ -91,10 +91,8 @@ const Tvdetails = () => {
                 }}
                 className="h-full w-full absolute top-0 left-0 z-[5]"
               >
-                {console.log(pathname)
-                }
                 <Link
-                  to={`/${pathname}/trailer`}
+                  to={`${pathname}/trailer`}
                   className="w-full h-full absolute  flex items-center p-5  justify-center"
                 >
                   <div className="flex gap-1 items-center px-4 py-2 rounded-md bg-white/80  w-fit">
