@@ -1,8 +1,40 @@
-# React + Vite
+# ARFLIX
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+ARFLIX is a React-based web application that serves as a streaming platform clone. It displays trending movies, popular shows, and more, using modern technologies like React, Vite, and Redux.
 
-Currently, two official plugins are available:
+## Table of Contents
+- [Demo](#demo)
+- [Features](#features)
+- [Installation](#installation)
+- [Running Locally](#running-locally)
+- [Build](#build)
+- [Deploy to GitHub Pages](#deploy-to-github-pages)
+- [Technologies Used](#technologies-used)
+- [License](#license)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Demo
+You can check out the live demo of this project at:  
+[ARFLIX on GitHub Pages](https://ravi181919.github.io/arflix/)
+
+## Technologies Used
+- React: For building the user interface
+- Vite: For fast builds and development experience
+- React Router: For managing navigation and routing
+- Redux Toolkit: For state management
+- Auth0: For authentication
+- Tailwind CSS: For styling and layout
+- gh-pages: For easy deployment to GitHub Pages
+
+## Features
+- Display trending movies and TV shows
+- Responsive design with Tailwind CSS
+- Movie details and trailers
+- Infinite scroll for dynamic content loading
+- Built-in authentication using Auth0
+
+## Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/ravi181919/arflix.git
+   cd arflix
