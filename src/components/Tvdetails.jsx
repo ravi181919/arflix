@@ -58,7 +58,7 @@ const Tvdetails = () => {
             >
               <CgArrowLongLeftC />
             </span>
-            <Link to={`/`}>
+            <Link to={`/arflix/`}>
               <h1 className="flex text-lg font-bold items-center gap-2">
                 <BiSolidTv className="text-red-600" />
                 <span>ARFLIX</span>
@@ -91,8 +91,10 @@ const Tvdetails = () => {
                 }}
                 className="h-full w-full absolute top-0 left-0 z-[5]"
               >
+                {console.log(pathname)
+                }
                 <Link
-                  to={`${pathname}/trailer`}
+                  to={`/${pathname}/trailer`}
                   className="w-full h-full absolute  flex items-center p-5  justify-center"
                 >
                   <div className="flex gap-1 items-center px-4 py-2 rounded-md bg-white/80  w-fit">
@@ -274,7 +276,7 @@ const Tvdetails = () => {
                 ? info.recommendations.map((data, index) => (
                     <Link
                       key={index}
-                      to={`/${data.media_type}/details/${data.id}`}
+                      to={`/arflix/${data.media_type}/details/${data.id}`}
                     >
                       <Trending trend={data} />
                     </Link>
@@ -282,7 +284,7 @@ const Tvdetails = () => {
                 : info.similar.map((data, index) => (
                     <Link
                       key={index}
-                      to={`/${data.media_type}/details/${data.id}`}
+                      to={`/arflix/${data.media_type}/details/${data.id}`}
                     >
                       <Trending trend={data} />
                     </Link>

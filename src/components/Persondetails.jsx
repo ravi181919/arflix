@@ -53,7 +53,7 @@ const Persondetails = () => {
             >
               <CgArrowLongLeftC />
             </span>
-            <Link to={`/`}>
+            <Link to={`/arflix/`}>
               <h1 className="flex text-lg font-bold items-center gap-2">
                 <BiSolidTv className="text-red-600" />
                 <span>ARFLIX</span>
@@ -226,7 +226,7 @@ const Persondetails = () => {
                   (trending, indexTrending) => (
                     <Link
                       key={indexTrending}
-                      to={`/${category}/details/${trending.id}`}
+                      to={`/arflix/${category}/details/${trending.id}`}
                     >
                       <Trending trend={trending} />
                     </Link>
@@ -244,7 +244,7 @@ const Persondetails = () => {
           <div className="w-full h-auto overflow-x-scroll flex gap-10 py-5 px-10 outline-none">
             {info.combinedCredits.cast.map((trending, index) => (
               <div key={index} className="min-w-52 h-44">
-                <Link to={`/${trending.media_type}/details/${trending.id}`}>
+                <Link to={`/arflix/${trending.media_type}/details/${trending.id}`}>
                   <Trending trend={trending} />
                 </Link>
               </div>

@@ -6,7 +6,7 @@ const Cards = ({ trending, title }) => {
     <div className="w-full relative flex flex-wrap gap-4 items-start justify-center bg-zinc-800">
       {trending.map((items, index) => (
         <Link
-          to={`/${items.media_type || title}/details/${items.id}`}
+          to={`/arflix/${items.media_type || title}/details/${items.id}`}
           key={index}
           className="flex flex-wrap w-52 h-auto  py-4 overflow-hidden"
         >

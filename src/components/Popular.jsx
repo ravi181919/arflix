@@ -22,7 +22,7 @@ const Popular = () => {
   const getPopular = async () => {
     try {
       const { data } = await axios.get(
-        `/${category}/popular?page=${pageCount}`
+        `/arflix/${category}/popular?page=${pageCount}`
       );
       if (data.results.length > 0) {
         setPopular((prevState) => [...prevState, ...data.results]);
