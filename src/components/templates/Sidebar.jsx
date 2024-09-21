@@ -11,6 +11,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { LuLogIn } from "react-icons/lu";
 import { LuLogOut } from "react-icons/lu";
 
+
 const Sidebar = () => {
   const { isAuthenticated, logout, user,  loginWithRedirect} =
     useAuth0();
@@ -83,7 +84,7 @@ const Sidebar = () => {
           {isAuthenticated ? (
             <button
               onClick={() =>
-                logout({ logoutParams: { returnTo: window.location.origin } })
+                logout({ logoutParams: { returnTo: window.location.origin} })
               }
               className="flex items-center gap-2 duration-300 text-sm leading-none  font-medium hover:bg-red-600 hover:text-white text-zinc-400 p-4 rounded-md"
             >
