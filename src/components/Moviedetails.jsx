@@ -57,7 +57,7 @@ const Moviedetails = () => {
             >
               <CgArrowLongLeftC />
             </span>
-            <Link to={`/arflix/`}>
+            <Link to={`/arflix`}>
               <h1 className="flex text-lg font-bold items-center gap-2">
                 <BiSolidTv className="text-red-600" />
                 <span>ARFLIX</span>

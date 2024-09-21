@@ -62,7 +62,7 @@ const Home = () => {
             {allTrending.map((trending, indexTrending) => (
               <Link
                 key={indexTrending}
-                to={`/arflix/${trending.media_type}/details/${trending.id}`}
+                to={`/${trending.media_type}/details/${trending.id}`}
               >
                 <Trending trend={trending} />
               </Link>

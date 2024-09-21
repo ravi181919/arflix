@@ -35,7 +35,7 @@ const Header = ({ banner }) => {
           <p className="text-zinc-300 w-[70%] text-xs font-medium leading-[1.1]">
             {banner.overview.slice(0, 179)}
             <Link
-              to={`/arflix/${banner.media_type}/details/${banner.id}`}
+              to={`/${banner.media_type}/details/${banner.id}`}
               className="text-red-500 opacity-95 ml-1"
             >
               ...more
@@ -54,7 +54,7 @@ const Header = ({ banner }) => {
           </div>
           <div className="flex gap-6 mt-4">
             <Link
-              to={`/arflix/${banner.media_type}/details/${banner.id}/trailer`}
+              to={`/${banner.media_type}/details/${banner.id}/trailer`}
               className="bg-red-600 hover:saturate-150 text-white rounded-md py-2 px-5 font-medium"
             >
               Play Tailor
