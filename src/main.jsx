@@ -14,7 +14,7 @@ createRoot(document.getElementById("root")).render(
       domain={conf.authDomainUrl} // Use variables from config
       clientId={conf.authClientId}
       authorizationParams={{
-        redirect_uri: window.location.origin + conf.viteBaseUrl,
+        redirect_uri: window.location.origin ,
       }}
     >
       <Provider store={store}>
