@@ -23,6 +23,12 @@ You can check out the live demo of this project at:
 - Redux Toolkit: For state management
 - Auth0: For authentication
 - Tailwind CSS: For styling and layout
+- React Player: For play the video
+- Axios: For API Call
+- Dotenv: For Secure our sensitive information
+- iso-639-1: For extract or express the code language
+- react-infinite-scroll-component: For Infinite scroll for dynamic content loading
+- react-icons: For add symbol or unique icons
 - gh-pages: For easy deployment to GitHub Pages
 
 ## Features
