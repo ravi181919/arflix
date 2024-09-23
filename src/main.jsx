@@ -8,6 +8,11 @@ import { Auth0Provider } from "@auth0/auth0-react";
 import React from "react";
 import conf from "./config/conf.js";
 
+// ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+{/**  when you preview at localhost then you must need to remove (basename={conf.viteBaseUrl} and (+ conf.viteBaseUrl))*/ }
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <Auth0Provider
@@ -17,8 +22,8 @@ createRoot(document.getElementById("root")).render(
         redirect_uri: window.location.origin + conf.viteBaseUrl,
       }}
     >
-      <Provider store={store}>
-        <BrowserRouter basename={conf.viteBaseUrl}>
+      <Provider store={store}> 
+        <BrowserRouter basename={conf.viteBaseUrl}> 
           <App />
         </BrowserRouter>
       </Provider>
